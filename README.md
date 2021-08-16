@@ -29,6 +29,6 @@ The ```/statistics/``` folder contains all the tools and scripts used to evaluat
 
 ```calc_cat.py``` produces a catalog from a given number of test cubes of the test region. This is done by first Poisson sampling all float values to integers and then randomly placing the given number of particles inside each voxel's volume.
 
-These catalogs are then used to calculate the power spectra, the pdf and find FoF halos inside ```eval_cat.py```. The calculation of the two-point correlation function is computationally very expensive when using the LS estimator, thus it is done seperately on mutiple ranks inside the ```/statistics/2pcf/``` folder.
+These catalogs are then used to calculate the power spectra, the pdf and find FoF halos inside ```eval_cat.py```. The calculation of the two-point correlation function is computationally very expensive when using the LS estimator, thus it is done seperately on mutiple ranks inside the ```calc_2pcf.py``` script.
 
 A lot of the calculations build on [nbodykit](https://github.com/bccp/nbodykit), a massively parallel large-scale structure toolkit, which is easy to use and reasonably fast.
