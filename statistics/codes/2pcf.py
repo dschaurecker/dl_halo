@@ -110,12 +110,12 @@ if comm.rank == 0:
     np.save(direc_data+'2pcf_target_corr', cf2.corr['corr'])
 
 if comm.rank == 0: print('ill3 2pcf')
-cf0_ill = SimulationBox2PCF('1d', data1=f0_ill, randoms1=cat_rand_ill3, edges=bins, BoxSize=box_sz, periodic=False, show_progress=True)
+cf0_ill = SimulationBox2PCF('1d', data1=parts[0], randoms1=cat_rand_ill3, edges=bins, BoxSize=box_sz, periodic=False, show_progress=True)
 if comm.rank == 0: 
     np.save(direc_data+'2pcf_ill3_r', cf0_ill.corr['r'])
     np.save(direc_data+'2pcf_ill3_corr', cf0_ill.corr['corr'])
 if comm.rank == 0: print('ill2 2pcf')
-cf1_ill = SimulationBox2PCF('1d', data1=f1_ill, randoms1=cat_rand_ill2, edges=bins, BoxSize=box_sz, periodic=False, show_progress=True)
+cf1_ill = SimulationBox2PCF('1d', data1=parts[1], randoms1=cat_rand_ill2, edges=bins, BoxSize=box_sz, periodic=False, show_progress=True)
 if comm.rank == 0: 
     np.save(direc_data+'2pcf_ill2_r', cf1_ill.corr['r'])
     np.save(direc_data+'2pcf_ill2_corr', cf1_ill.corr['corr'])
