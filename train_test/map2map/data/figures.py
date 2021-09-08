@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import Normalize, LogNorm, SymLogNorm
 from matplotlib.cm import ScalarMappable
 
-from ..models import lag2eul, power
+from ..models import power
 
 def fig3d_zoom(*fields, path=None, size=32, cmap=None, norm=None):
     fields = [field.detach().cpu().numpy() if isinstance(field, torch.Tensor)

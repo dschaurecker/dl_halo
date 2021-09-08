@@ -22,7 +22,6 @@ from .data.figures import plt_power #plt_slices
 from . import models
 from .models import (
     narrow_cast, resample,
-    WDistLoss, wasserstein_distance_loss, wgan_grad_penalty,
     grad_penalty_reg,
     add_spectral_norm, rm_spectral_norm,
     InstanceNoise,
@@ -62,7 +61,7 @@ def node_worker(args):
     
     #create run_path dir
     if node == 0 and not os.path.exists('./states/'+run_path+'/'):
-        os.mkdir('./states/'+run_path+'/')
+        os.makedirs('./states/'+run_path+'/')
     if node == 0:
         print(run_path)
         print('torch version', torch.__version__)
@@ -260,7 +259,7 @@ def gpu_worker(local_rank, node, args, run_path):
 
     logger = None
     if rank == 0:
-        logger = SummaryWriter(log_dir='./runs2/'+run_path+'/')
+        logger = SummaryWriter(log_dir='./runs/'+run_path+'/')
 
     if rank == 0:
         pprint(vars(args))

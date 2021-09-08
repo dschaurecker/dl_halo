@@ -21,28 +21,16 @@ def get_args():
         'test',
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    test_parser_2048 = subparsers.add_parser(
-        'test2048',
-        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
-    )
 
     add_train_args(train_parser)
-    add_train_args(train_parser_zoom)
-    add_train_args(train_teststuff_parser)
-    add_train_args(train_modelparal_parser)
-    
     add_test_args(test_parser)
-    add_test_args(test_parser_2048)
-    add_test_args(test_parser_4096)
-    add_test_args(test_parser_zoom)
+
 
     args = parser.parse_args()
 
     if args.mode == 'train':
         set_train_args(args)
     elif args.mode == 'test':
-        set_test_args(args)
-    elif args.mode == 'test2048':
         set_test_args(args)
     
     return args

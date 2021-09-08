@@ -7,8 +7,32 @@ from .narrow import narrow_like, narrow_by
 
 from math import log2
 
-from .srsgan import AddNoise
+class AddNoise(nn.Module):
+    """Add or concatenate noise.
 
+    Add noise if `cat=False`.
+    The number of channels `chan` should be 1 (StyleGAN2)
+    or that of the input (StyleGAN).
+    """
+    def __init__(self, cat, chan=1):
+        super().__init__()
+
+        self.cat = cat
+
+        if not self.cat:
+            self.std = nn.Parameter(torch.zeros([chan]))
+
+    def forward(self, x):
+        noise = torch.randn_like(x[:, :1])
+
+        if self.cat:
+            x = torch.cat([x, noise], dim=1)
+        else:
+            std_shape = (-1,) + (1,) * (x.dim() - 2)
+            noise = self.std.view(std_shape) * noise
+            x = x + noise
+
+        return x
     
 class G(nn.Module):
     def __init__(self, in_chan, out_chan, bypass=None, **kwargs):

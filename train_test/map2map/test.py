@@ -31,13 +31,13 @@ def node_worker(args):
     run_name = args.train_run_name #name of training run that's loaded
     
     #make dir for saving the epoch states
-    if not os.path.exists('test'):
-        os.mkdir('test')
+    if node != 0: time.sleep(5) #wait 5 seconds for node 0 to create folders
+    
+    if not os.path.exists('./test'):
+        os.mkdir('./test')
     now = datetime.now()
     save_to = run_name + '_' + str(os.environ['SLURM_JOB_NAME']) + '/' + 'state_' + str(args.state_num) + '/'
     #save_to = 'name_you_want' #set manually
-    
-    if node != 0: time.sleep(5) #wait 5 seconds for node 0 to create folders
     
     folder_path = './test/'+save_to
     in_path = args.in_folder #eg. /scratch/ds6311/Illustris-3/dm_only_2048_counts_arrays_subcubes_128/cic/cube7_1024_1024_1024/*/*'
