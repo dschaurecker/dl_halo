@@ -25,6 +25,8 @@ Inside the ```args.py``` code all details and explanations on what arguments are
 
 The current ```train_job.s``` script as it is allows for dummy training on a very small training set to check the installation. The folder structure in which the training cubes are stored will have to be adjusted in order to run testing on this small dummy dataset. Of course for actual training runs this, and all other slurm scripts, will have to be adjusted.
 
+The state  ```/states/best_state_599.pt``` is the Generator's state used in the paper.
+
 ## Evaluation of statistics
 
 The ```/statistics/``` folder contains all the tools and scripts used to evaluate the trained net's performance statistically. 
